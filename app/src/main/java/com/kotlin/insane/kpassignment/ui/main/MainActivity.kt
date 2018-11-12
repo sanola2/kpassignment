@@ -1,8 +1,10 @@
 package com.kotlin.insane.kpassignment.ui.main
 
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProviders
 import com.kotlin.insane.kpassignment.R
 import com.kotlin.insane.kpassignment.databinding.ActivityMainBinding
+import com.kotlin.insane.kpassignment.repository.WeatherRepository
 import com.kotlin.insane.kpassignment.ui.BaseActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -11,7 +13,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        val mainViewModelFactory = MainViewModelFactory(WeatherRepository())
+        val mainViewModel = ViewModelProviders.of(this, mainViewModelFactory).get(MainViewModel::class.java)
 
     }
 }
