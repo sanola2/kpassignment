@@ -1,6 +1,7 @@
 package com.kotlin.insane.kpassignment.ui.main
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kotlin.insane.kpassignment.R
 import com.kotlin.insane.kpassignment.databinding.ActivityMainBinding
@@ -17,5 +18,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val mainViewModelFactory = MainViewModelFactory(WeatherRepository())
         val mainViewModel = ViewModelProviders.of(this, mainViewModelFactory).get(MainViewModel::class.java)
 
+        viewDataBinding.mainViewModel = mainViewModel
+        viewDataBinding.setLifecycleOwner(this)
     }
 }
