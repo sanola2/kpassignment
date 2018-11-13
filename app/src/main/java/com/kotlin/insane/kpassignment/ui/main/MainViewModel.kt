@@ -1,8 +1,8 @@
 package com.kotlin.insane.kpassignment.ui.main
 
-import androidx.lifecycle.ViewModel
 import com.kotlin.insane.kpassignment.repository.WeatherRepository
+import com.kotlin.insane.kpassignment.ui.DisposableViewModel
 
-class MainViewModel(private val repository: WeatherRepository): ViewModel() {
+class MainViewModel(private val repository: WeatherRepository): DisposableViewModel() {
 
 }
