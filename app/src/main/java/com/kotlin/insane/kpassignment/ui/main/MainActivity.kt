@@ -1,7 +1,6 @@
 package com.kotlin.insane.kpassignment.ui.main
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kotlin.insane.kpassignment.R
 import com.kotlin.insane.kpassignment.databinding.ActivityMainBinding
