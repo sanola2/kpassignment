@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.item_weather.view.*
 
 class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
     private lateinit var weatherList: List<WeatherList>
+    private lateinit var mOnClick: (position: Int) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherAdapter.ViewHolder {
         val binding: ItemWeatherBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_weather, parent, false)
@@ -27,6 +28,7 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
                 .into(list_img)
         }
 
+        holder.itemView.setOnClickListener { mOnClick(position) }
         holder.bind(weatherList[position])
     }
 
@@ -39,7 +41,12 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
+    infix fun setItemClickMethod(onClick: (position: Int) -> Unit) {
+        this.mOnClick = onClick
+    }
+
     class ViewHolder(private val binding: ItemWeatherBinding): RecyclerView.ViewHolder(binding.root) {
+
         private val viewModel = MainListViewModel()
 
         fun bind(weatherList: WeatherList) {

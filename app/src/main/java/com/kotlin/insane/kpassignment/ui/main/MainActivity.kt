@@ -1,11 +1,13 @@
 package com.kotlin.insane.kpassignment.ui.main
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.insane.kpassignment.R
 import com.kotlin.insane.kpassignment.databinding.ActivityMainBinding
+import com.kotlin.insane.kpassignment.model.WeatherList
 import com.kotlin.insane.kpassignment.repository.WeatherRepository
 import com.kotlin.insane.kpassignment.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,7 +23,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val mainViewModelFactory = MainViewModelFactory(WeatherRepository())
         val mainViewModel = ViewModelProviders.of(this, mainViewModelFactory).get(MainViewModel::class.java)
 
+        mainViewModel.itemObservable.observe(this, Observer { goToDetailActivity(it!!) })
+
         viewDataBinding.mainViewModel = mainViewModel
         viewDataBinding.setLifecycleOwner(this)
+    }
+
+    fun goToDetailActivity(item: WeatherList) {
+        println("TESTEST" + item.dt_txt)
     }
 }
