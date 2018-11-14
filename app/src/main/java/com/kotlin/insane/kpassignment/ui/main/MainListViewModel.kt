@@ -20,4 +20,5 @@ class MainListViewModel: DisposableViewModel() {
         _listDate.value = weatherList.dt_txt
         _listDescription.value = weatherList.weather.get(0).description
     }
+
 }
