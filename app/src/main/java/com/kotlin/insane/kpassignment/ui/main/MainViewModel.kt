@@ -3,7 +3,6 @@ package com.kotlin.insane.kpassignment.ui.main
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.kotlin.insane.kpassignment.model.WeatherList
 import com.kotlin.insane.kpassignment.repository.WeatherRepository
 import com.kotlin.insane.kpassignment.ui.DisposableViewModel
@@ -15,13 +14,14 @@ import io.reactivex.schedulers.Schedulers
 class MainViewModel(private val repository: WeatherRepository): DisposableViewModel() {
 
     private val _itemObservable = SingleLiveEvent<WeatherList>()
-    private  val _progressBar = SingleLiveEvent<Int>()
+    private val _progressBar = SingleLiveEvent<Int>()
     private lateinit var dataList: List<WeatherList>
 
     val itemObservable: LiveData<WeatherList> get() = _itemObservable
     val progressBar: LiveData<Int> get() = _progressBar
 
-    val wetherListAdapter = WeatherAdapter()
+    val weatherListAdapter = WeatherAdapter()
+    val refreshObserver = SingleLiveEvent<Int>()
 
     init {
         getWeather()
@@ -42,10 +42,11 @@ class MainViewModel(private val repository: WeatherRepository): DisposableViewMo
 
     private fun setWeatherAdapter(weatherList: List<WeatherList>) {
         dataList = weatherList
-        wetherListAdapter setItemClickMethod {
+        weatherListAdapter setItemClickMethod {
             this.onItemClick(it)
         }
-        wetherListAdapter.updateWeatherList(weatherList)
+        weatherListAdapter.updateWeatherList(weatherList)
+        isFinishedGet()
     }
 
     fun onItemClick(position: Int) {
@@ -54,5 +55,9 @@ class MainViewModel(private val repository: WeatherRepository): DisposableViewMo
 
     private fun onGetListState(visibility: Int) {
         _progressBar.value = visibility
+    }
+
+    private fun isFinishedGet() {
+        refreshObserver.call()
     }
 }

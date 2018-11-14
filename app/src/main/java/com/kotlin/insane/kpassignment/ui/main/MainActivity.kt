@@ -26,6 +26,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val mainViewModel = ViewModelProviders.of(this, mainViewModelFactory).get(MainViewModel::class.java)
 
         mainViewModel.itemObservable.observe(this, Observer { goToDetailActivity(it!!) })
+        swipe_container.setOnRefreshListener { mainViewModel.getWeather() }
+        mainViewModel.refreshObserver.observe(this, Observer { swipe_container.isRefreshing = false })
         
         viewDataBinding.mainViewModel = mainViewModel
         viewDataBinding.setLifecycleOwner(this)
