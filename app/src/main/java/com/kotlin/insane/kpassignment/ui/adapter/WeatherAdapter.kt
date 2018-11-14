@@ -9,6 +9,7 @@ import com.kotlin.insane.kpassignment.R
 import com.kotlin.insane.kpassignment.databinding.ItemWeatherBinding
 import com.kotlin.insane.kpassignment.model.WeatherList
 import com.kotlin.insane.kpassignment.ui.main.MainListViewModel
+import com.kotlin.insane.kpassignment.util.iconExt
 import com.kotlin.insane.kpassignment.util.iconUrl
 import kotlinx.android.synthetic.main.item_weather.view.*
 
@@ -24,7 +25,7 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.run {
             Glide.with(context)
-                .load(iconUrl + weatherList[position].weather.get(0).icon + ".png")
+                .load(iconUrl + weatherList[position].weather.get(0).icon + iconExt)
                 .into(list_img)
         }
 

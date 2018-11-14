@@ -1,5 +1,6 @@
 package com.kotlin.insane.kpassignment.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -10,6 +11,7 @@ import com.kotlin.insane.kpassignment.databinding.ActivityMainBinding
 import com.kotlin.insane.kpassignment.model.WeatherList
 import com.kotlin.insane.kpassignment.repository.WeatherRepository
 import com.kotlin.insane.kpassignment.ui.BaseActivity
+import com.kotlin.insane.kpassignment.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -30,6 +32,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun goToDetailActivity(item: WeatherList) {
-        println("TESTEST" + item.dt_txt)
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("icon", item.weather.get(0).icon)
+        intent.putExtra("description", item.weather.get(0).description)
+        intent.putExtra("date", item.dt_txt)
+        intent.putExtra("temp", item.main.temp.toString())
+        intent.putExtra("pressure", item.main.pressure.toString())
+        intent.putExtra("humidity", item.main.humidity.toString())
+        startActivity(intent)
     }
 }
