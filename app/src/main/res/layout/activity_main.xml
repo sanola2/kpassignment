@@ -22,6 +22,15 @@
                 <include layout="@layout/toolbar_main" />
         </androidx.appcompat.widget.ActionBarContainer>
 
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{mainViewModel.progressBar}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/weather_rv"
                 android:layout_width="0dp"
