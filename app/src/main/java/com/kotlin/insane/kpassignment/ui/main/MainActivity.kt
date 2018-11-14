@@ -26,7 +26,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val mainViewModel = ViewModelProviders.of(this, mainViewModelFactory).get(MainViewModel::class.java)
 
         mainViewModel.itemObservable.observe(this, Observer { goToDetailActivity(it!!) })
-
+        
         viewDataBinding.mainViewModel = mainViewModel
         viewDataBinding.setLifecycleOwner(this)
     }
