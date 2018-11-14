@@ -14,12 +14,20 @@
             android:layout_height="match_parent"
             tools:context=".ui.main.MainActivity">
 
+        <androidx.appcompat.widget.ActionBarContainer
+                android:id="@+id/action_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/toolbar_main" />
+        </androidx.appcompat.widget.ActionBarContainer>
+
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/weather_rv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:adapter="@{mainViewModel.wetherListAdapter}"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/action_bar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

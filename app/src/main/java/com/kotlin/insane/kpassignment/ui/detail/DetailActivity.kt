@@ -9,6 +9,7 @@ import com.kotlin.insane.kpassignment.ui.BaseActivity
 import com.kotlin.insane.kpassignment.util.iconExt
 import com.kotlin.insane.kpassignment.util.iconUrl
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.toolbar_detail.view.*
 
 class DetailActivity: BaseActivity<ActivityDetailBinding>() {
 
@@ -19,13 +20,14 @@ class DetailActivity: BaseActivity<ActivityDetailBinding>() {
 
         val detailViewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
         detailViewModel.initData(intent)
-        drawImg()
+        init()
 
         viewDataBinding.detailViewModel = detailViewModel
         viewDataBinding.setLifecycleOwner(this)
     }
 
-    private fun drawImg() {
+    private fun init() {
+        viewDataBinding.detailToolbar.toolbar_back?.setOnClickListener { onBackPressed() }
         Glide.with(this)
             .load(iconUrl + intent.getStringExtra("icon") + iconExt)
             .into(detail_img)

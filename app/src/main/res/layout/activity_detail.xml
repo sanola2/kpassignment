@@ -6,83 +6,98 @@
         <variable name="detailViewModel"
                   type="com.kotlin.insane.kpassignment.ui.detail.DetailViewModel" />
     </data>
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="15dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <androidx.appcompat.widget.ActionBarContainer
+                android:id="@+id/detail_actionbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <include
+                    android:id="@+id/detail_toolbar"
+                    layout="@layout/toolbar_detail" />
+        </androidx.appcompat.widget.ActionBarContainer>
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical" >
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold"
-                    android:text="Seoul"/>
-
-            <ImageView
-                    android:id="@+id/detail_img"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="18dp"/>
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="17sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="17dp"
-                    android:text="@{detailViewModel.detailDescription}"/>
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="17sp"
-                    android:layout_marginTop="7dp"
-                    android:text="@{detailViewModel.detailDate}"/>
-
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="50dp"
-                    android:background="@color/colorPrimaryDark"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical" >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold"
+                        android:text="Seoul"/>
+
+                <ImageView
+                        android:id="@+id/detail_img"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="18dp"/>
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="17sp"
                         android:textColor="@color/black"
-                        android:text="@{detailViewModel.detailTemp}"/>
+                        android:layout_marginTop="17dp"
+                        android:text="@{detailViewModel.detailDescription}"/>
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:textSize="17sp"
-                        android:textColor="@color/black"
-                        android:text="@{detailViewModel.detailHumidity}"/>
+                        android:layout_marginTop="7dp"
+                        android:text="@{detailViewModel.detailDate}"/>
 
-                <TextView
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="50dp"
+                        android:background="@color/colorPrimaryDark"/>
+
+                <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textSize="17sp"
-                        android:textColor="@color/black"
-                        android:text="@{detailViewModel.detailPressure}"/>
+                        android:orientation="vertical">
 
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="17sp"
+                            android:textColor="@color/black"
+                            android:text="@{detailViewModel.detailTemp}"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="17sp"
+                            android:textColor="@color/black"
+                            android:text="@{detailViewModel.detailHumidity}"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="17sp"
+                            android:textColor="@color/black"
+                            android:text="@{detailViewModel.detailPressure}"/>
+
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
