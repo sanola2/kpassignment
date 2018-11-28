@@ -34,13 +34,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun goToDetailActivity(item: WeatherList) {
-        val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("icon", item.weather.get(0).icon)
-        intent.putExtra("description", item.weather.get(0).description)
-        intent.putExtra("date", item.dt_txt)
-        intent.putExtra("temp", item.main.temp.toString())
-        intent.putExtra("pressure", item.main.pressure.toString())
-        intent.putExtra("humidity", item.main.humidity.toString())
-        startActivity(intent)
+        Intent(this, DetailActivity::class.java).apply {
+            putExtra("icon", item.weather.get(0).icon)
+            putExtra("description", item.weather.get(0).description)
+            putExtra("date", item.dt_txt)
+            putExtra("temp", item.main.temp.toString())
+            putExtra("pressure", item.main.pressure.toString())
+            putExtra("humidity", item.main.humidity.toString())
+        }.also { startActivity(it) }
     }
 }
