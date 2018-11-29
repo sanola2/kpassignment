@@ -2,16 +2,17 @@ package com.kotlin.insane.kpassignment.ui.detail
 
 import android.content.Intent
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.kotlin.insane.kpassignment.ui.DisposableViewModel
 import com.kotlin.insane.kpassignment.util.SingleLiveEvent
 
 class DetailViewModel: DisposableViewModel() {
 
-    private val _detailDate = SingleLiveEvent<String>()
-    private val _detailDescription = SingleLiveEvent<String>()
-    private val _detailTemp = SingleLiveEvent<String>()
-    private val _detailHumidity = SingleLiveEvent<String>()
-    private val _detailPressure = SingleLiveEvent<String>()
+    private val _detailDate = MutableLiveData<String>()
+    private val _detailDescription = MutableLiveData<String>()
+    private val _detailTemp = MutableLiveData<String>()
+    private val _detailHumidity = MutableLiveData<String>()
+    private val _detailPressure = MutableLiveData<String>()
 
     val detailDate: LiveData<String> get() = _detailDate
     val detailDescription: LiveData<String> get() = _detailDescription

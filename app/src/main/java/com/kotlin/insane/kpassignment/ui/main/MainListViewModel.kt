@@ -16,8 +16,8 @@ class MainListViewModel: DisposableViewModel() {
     val listDescription: LiveData<String> get() = _listDescription
 
     fun bind(weatherList: WeatherList) {
-        _listIcon.value = weatherList.weather.get(0).icon
+        _listIcon.value = weatherList.weather[0].icon
         _listDate.value = weatherList.dt_txt
-        _listDescription.value = weatherList.weather.get(0).description
+        _listDescription.value = weatherList.weather[0].description
     }
 }

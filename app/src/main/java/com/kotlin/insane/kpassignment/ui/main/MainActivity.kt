@@ -35,8 +35,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     fun goToDetailActivity(item: WeatherList) {
         Intent(this, DetailActivity::class.java).apply {
-            putExtra("icon", item.weather.get(0).icon)
-            putExtra("description", item.weather.get(0).description)
+            putExtra("icon", item.weather[0].icon)
+            putExtra("description", item.weather[0].description)
             putExtra("date", item.dt_txt)
             putExtra("temp", item.main.temp.toString())
             putExtra("pressure", item.main.pressure.toString())
